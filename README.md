@@ -15,7 +15,7 @@
 
 ### 3 - Lancer le projet :
 
-``expo start`
+``expo start``
 ou
 ``npm start``
 
