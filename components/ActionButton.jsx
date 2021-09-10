@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 const ActionButton = ({ title, onPress }) => (
     <TouchableOpacity onPress={onPress}>
         <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>{title}</Text>
+            <Text style={styles.buttonText}>{title.toUpperCase()}</Text>
         </View>
     </TouchableOpacity>
 );
