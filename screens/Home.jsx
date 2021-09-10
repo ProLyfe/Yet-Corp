@@ -1,11 +1,53 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, FlatList, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import ActionButton from '../components/ActionButton';
+import Firebase from '../firebase';
 
-const Home = () => (
-    <View style={styles.container}>
-        <Text>Home page</Text>
-    </View>
-);
+const Home = () => {
+
+  const [tasks, setTasks] = useState([]);;
+
+  const addInput = () => {
+    setTasks(prevState => [
+      { key: Math.random().toString(), text: '' },
+      ...prevState,
+    ]);
+  };
+
+  const sendData = () => {
+    console.log('tasks :', tasks)
+    Firebase.database()
+      .ref('/tasks')
+      .set(tasks)
+      .then(() => console.log('Envoi réussi'))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+          <FlatList
+            data={tasks}
+            renderItem={({ item }) => (
+              <View style={styles.textInputContainer}>
+                <TextInput
+                  placeholder={item.text}
+                  placeholderTextColor="black"
+                  style={styles.input}
+                  onChangeText={textValue => item.text = textValue}
+                />
+              </View>
+          )}/>
+          <View style={styles.buttonContainer}>
+            <ActionButton title="Ajouter" onPress={addInput}/>
+            <ActionButton title="Envoyer" onPress={sendData}/>
+          </View>
+      </View>
+    </TouchableWithoutFeedback>
+  )
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -14,6 +56,25 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+      width: '100%'
+    },
+    input: {
+      borderColor: 'black',
+      borderBottomWidth: 1,
+      padding: 10,
+      backgroundColor: 'white',
+      width: 240,
+      marginTop: 3
+    },
+    textInputContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
   });
 
 export default Home;

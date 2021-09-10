@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, StyleSheet, Image, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import AuthForm from '../components/AuthForm';
 import FlatButton from '../components/FlatButton';
 import Firebase from '../firebase';
@@ -12,7 +12,7 @@ const Login = ({ navigation }) => {
 
   const login = () => {
     Firebase.auth()
-    .signInWithEmailAndPassword('rayane.minecraft@gmail.com', 'test123')
+    .signInWithEmailAndPassword(email, password)
       .then(user =>{
         console.log('Yeay');
         navigation.navigate('Home')

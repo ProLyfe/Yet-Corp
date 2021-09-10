@@ -13,7 +13,7 @@ const screens = {
     },
     Home: {
         screen: Home
-    }
+    },
 };
 
 const stackRoute = createStackNavigator(screens);

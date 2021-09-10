@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 // import { initializeApp } from "firebase/app";
 // Optionally import the services that you want to use
 import "firebase/auth";
-// import "firebase/database";
+import "firebase/database";
 //import "firebase/firestore";
 //import "firebase/functions";
 //import "firebase/storage";
@@ -11,7 +11,7 @@ import "firebase/auth";
 const firebaseConfig = {
 //   apiKey: 'api-key',
 //   authDomain: 'project-id.firebaseapp.com',
-//   databaseURL: 'https://project-id.firebaseio.com',
+  databaseURL: 'https://yet-project-74379-default-rtdb.europe-west1.firebasedatabase.app/',
 //   projectId: 'project-id',
 //   storageBucket: 'project-id.appspot.com',
 //   messagingSenderId: 'sender-id',

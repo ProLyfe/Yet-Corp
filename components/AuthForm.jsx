@@ -10,7 +10,7 @@ const AuthForm = ({ title, placeholder, onChangeText }) => (
             keyboardType="email-address"
             style={styles.input}
             onChangeText={text => onChangeText(text)}
-        />
+            />
        </View>
 );
 
