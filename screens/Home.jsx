@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, FlatList, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, StyleSheet, FlatList, TextInput, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import ActionButton from '../components/ActionButton';
 import Firebase from '../firebase';
 
@@ -19,7 +19,11 @@ const Home = () => {
     Firebase.database()
       .ref('/tasks')
       .set(tasks)
-      .then(() => console.log('Envoi réussi'))
+      .then(() => {
+        Alert.alert("Succès", "Vos messages ont bien été envoyé", [
+          { text: "Ok", onPress: () => Keyboard.dismiss()}
+        ]);
+      })
       .catch(err => {
         console.log(err);
       });

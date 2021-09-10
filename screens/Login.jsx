@@ -10,7 +10,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-
+  
   const login = () => {
     Firebase.auth()
     .signInWithEmailAndPassword(email, password)
