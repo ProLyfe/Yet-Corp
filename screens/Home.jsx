@@ -45,8 +45,8 @@ const Home = () => {
               </View>
           )}/>
           <View style={styles.buttonContainer}>
-            <ActionButton title="Ajouter" onPress={addInput}/>
             <ActionButton title="Envoyer" onPress={sendData}/>
+            <ActionButton title="Ajouter" onPress={addInput}/>
           </View>
       </View>
     </TouchableWithoutFeedback>
